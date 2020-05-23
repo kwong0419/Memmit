@@ -8,6 +8,6 @@ const {
 
 votes.get("/post/:post_id", getVotesForSinglePost);
 votes.post("/post/:post_id/:voter_id", upVote);
-votes.delete("/:post_id/:voter_id", downVote);
+votes.delete("/post/:post_id/:voter_id", downVote);
 
 module.exports = votes;
