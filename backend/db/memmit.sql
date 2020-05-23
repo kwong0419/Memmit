@@ -25,6 +25,14 @@ CREATE TABLE submemmits
     owner_id INT REFERENCES users(id) ON DELETE CASCADE
 );
 
+CREATE TABLE subscriptions
+(
+    id SERIAL PRIMARY KEY,
+    submemmitID INT REFERENCES submemmits(id) ON DELETE CASCADE,
+    userID INT REFERENCES users(id) ON DELETE CASCADE,
+    CONSTRAINT UC_subscription UNIQUE (submemmitID, userID)
+);
+
 CREATE TABLE posts
 (
     id SERIAL PRIMARY KEY,
@@ -68,6 +76,22 @@ VAlUES
     ('music', 2),
     ('coding', 2),
     ('cats', 2);
+
+INSERT INTO subscriptions
+    (submemmitID, userID)
+VALUES
+    (1, 1),
+    (2, 1),
+    (3, 1),
+    (4, 1),
+    (5, 1),
+    (6, 1),
+    (1, 2),
+    (2, 2),
+    (3, 2),
+    (4, 2),
+    (5, 2),
+    (6, 2);
 
 INSERT INTO posts
     (owner_id, submemmit_id, image_url, body)
