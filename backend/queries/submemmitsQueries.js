@@ -6,7 +6,7 @@ const getAllSubmemmits = (req, res, next) => {
       status: "Success",
       message: "get ALL submemmits",
       body: {
-          submemmits: await db.any('SELECT * FROM submemmits')
+          submemmits: await db.any("SELECT * FROM submemmits")
       },
     });
   } catch (error) {

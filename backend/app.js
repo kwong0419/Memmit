@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 const usersRouter = require("./routes/users");
 const submemmitsRouter = require("./routes/submemmits");
 const postsRouter = require("./routes/posts");
-const votesRouter = require("./routes/likes");
+const votesRouter = require("./routes/votes");
 const commentsRouter = require("./routes/comments");
 
 app.use("/users", usersRouter);
