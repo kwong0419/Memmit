@@ -1,8 +1,8 @@
 const db = require("../db/index");
 
 const getAllCommentsFromSinglePost = async (req, res, next) => {
-  const { post_id } = req.params;
   try {
+    const { post_id } = req.params;
     res.status(200).json({
       status: "Success",
       message: `Grabbed all comments from post #${post_id}`,
