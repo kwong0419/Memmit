@@ -18,10 +18,10 @@ const getAllSubscriptions = async (req, res, next) => {
 
 const insertSingleSubscription = async (req, res, next) => {
   try {
-    const { submemmitID, userID } = req.body;
+    const { submemmitID, userID } = req.params;
     res.status(200).json({
       status: "Success",
-      message: "User: " + id + " subscribed to submemmit: " + submemmitID,
+      message: "User: " + userID + " subscribed to submemmit: " + submemmitID,
       body: {
         single_subscription: await db.one(
           "INSERT INTO subscriptions (submemmitID, userID) VALUES ($1, $2) RETURNING *",
@@ -38,14 +38,15 @@ const insertSingleSubscription = async (req, res, next) => {
 
 const deleteSingleSubscription = async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const { submemmitID, userID } = req.params;
     res.status(200).json({
       status: "Success",
-      message: "User: " + id + " unsubscribed from submemmit: " + submemmitID,
+      message:
+        "User: " + userID + " unsubscribed from submemmit: " + submemmitID,
       body: {
         single_unsubscription: await db.one(
-          "DELETE FROM subscriptions WHERE id = $1 RETURNING *",
-          id
+          "DELETE FROM subscriptions WHERE (submemmitID = $1 AND userID = $2)  RETURNING *",
+          [submemmitID, userID]
         ),
       },
     });

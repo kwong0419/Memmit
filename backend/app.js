@@ -28,12 +28,14 @@ const submemmitsRouter = require("./routes/submemmits");
 const postsRouter = require("./routes/posts");
 const votesRouter = require("./routes/votes");
 const commentsRouter = require("./routes/comments");
+const subscriptionsRouter = require("./routes/subscriptions");
 
 app.use("/users", usersRouter);
 app.use("/submemmits", submemmitsRouter);
 app.use("/posts", postsRouter);
 app.use("/votes", votesRouter);
 app.use("/comments", commentsRouter);
+app.use("/subscriptions", subscriptionsRouter);
 
 app.post("/uploadphoto", (req, res) => {
   upload(req, res, function (err) {

@@ -9,7 +9,7 @@ const getVotesForSinglePost = async (req, res, next) => {
       body: {
         searchPostID: post_id,
         result: await db.any(
-          "SELECT * FROM posts JOIN LIKES ON posts.id = likes.post_id WHERE posts.id = $1",
+          "SELECT * FROM posts JOIN votes ON posts.id = votes.post_id WHERE posts.id = $1",
           post_id
         ),
       },
@@ -31,7 +31,7 @@ const upVote = async (req, res, next) => {
         voter_id: voter_id,
         post_id: post_id,
         result: await db.one(
-          "INSERT INTO likes (voter_id, post_id) VALUES($1, $2) RETURNING *",
+          "INSERT INTO votes (voter_id, post_id) VALUES($1, $2) RETURNING *",
           [voter_id, post_id]
         ),
       },
@@ -53,7 +53,7 @@ const downVote = async (req, res, next) => {
         voter_id: voter_id,
         post_id: post_id,
         result: await db.one(
-          "DELETE FROM likes WHERE (voter_id = $1 AND post_id = $2) RETURNING *",
+          "DELETE FROM votes WHERE (voter_id = $1 AND post_id = $2) RETURNING *",
           [voter_id, post_id]
         ),
       },

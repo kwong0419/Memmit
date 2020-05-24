@@ -14,7 +14,9 @@ const getAllCommentsFromSinglePost = async (req, res, next) => {
       },
     });
   } catch (error) {
-    next(error);
+    res.json({
+      error: error,
+    });
   }
 };
 
@@ -34,7 +36,9 @@ const addSingleComment = async (req, res, next) => {
       },
     });
   } catch (error) {
-    next(error);
+    res.json({
+      error: error,
+    });
   }
 };
 
@@ -54,7 +58,9 @@ const editSingleComment = async (req, res, next) => {
       },
     });
   } catch (error) {
-    next(error);
+    res.json({
+      error: error,
+    });
   }
 };
 
@@ -73,7 +79,9 @@ const deleteSingleComment = async (req, res, next) => {
       },
     });
   } catch (error) {
-    next(error);
+    res.json({
+      error: error,
+    });
   }
 };
 
