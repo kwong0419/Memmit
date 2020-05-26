@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS memmit_db;
-CREATE DATABASE memmit_db;
+-- DROP DATABASE IF EXISTS memmit_db;
+-- CREATE DATABASE memmit_db;
 
-\c memmit_db;
+-- \c memmit_db;
 
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS submemmits;
