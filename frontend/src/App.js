@@ -5,20 +5,24 @@ import Home from "./features/Home/Home";
 import Login from "./features/Login/Login";
 import SignUp from "./features/SignUp/SignUp";
 import "./App.css";
+import AuthProvider from "./providers/AuthContext";
+import { AuthRoute, ProtectedRoute } from "./util/routesUtil";
 
 function App() {
   return (
     <div className="App">
-      <NavBar />
-      <Route exact path="/">
-        <Home />
-      </Route>
-      <Route exact path="/login">
-        <Login />
-      </Route>
-      <Route exact path="/signup">
-        <SignUp />
-      </Route>
+      <AuthProvider>
+        <NavBar />
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <AuthRoute exact path="/login">
+          <Login />
+        </AuthRoute>
+        <AuthRoute exact path="/signup">
+          <SignUp />
+        </AuthRoute>
+      </AuthProvider>
     </div>
   );
 }

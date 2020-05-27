@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { login } from "../../util/firebaseFunctions";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -10,7 +11,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // log in with firebase and then change route
+      await login(email, password);
       history.push("/");
     } catch (err) {
       setError(err.message);
@@ -31,6 +32,7 @@ export default function Login() {
         />
         <label for="loginPassword">Password: </label>
         <input
+          type="password"
           id="loginPassword"
           value={password}
           placeholder="Password"

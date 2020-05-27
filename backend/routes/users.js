@@ -8,7 +8,9 @@ const {
   searchUserByName,
 } = require("../queries/usersQueries");
 
-users.get("/", getAllUsers);
+const { checkFirebaseToken } = require("../middleware/auth");
+
+users.get("/", checkFirebaseToken, getAllUsers);
 users.get("/:id", getSingleUserById);
 users.post("/", insertSingleUser);
 users.delete("/:id", deleteUserById);
