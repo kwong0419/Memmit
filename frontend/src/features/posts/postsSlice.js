@@ -26,7 +26,6 @@ export const postsSlice = createSlice({
   initialState: [],
   reducers: {
     addPost: (state, action) => {
-      action.payload.id++;
       state.push(action.payload);
     },
     receiveAllPosts: (state, action) => action.payload,

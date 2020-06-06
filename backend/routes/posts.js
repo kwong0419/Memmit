@@ -10,7 +10,7 @@ const {
 
 const { checkFirebaseToken } = require("../middleware/auth");
 
-posts.get("/", checkFirebaseToken, getAllPosts);
+posts.get("/", getAllPosts);
 posts.get("/:id", checkFirebaseToken, getAllPostsForSubscribedSubmemmits);
 posts.get("/user/:owner_id", getAllPostsBySingleUser);
 posts.post("/", insertSinglePost);

@@ -7,18 +7,21 @@ export default function Votes({ post_id }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // dispatch(fetchAllVotes());
+    dispatch(fetchAllVotes(post_id));
   }, []);
+
+  let votes = useSelector((state) => state.votes[post_id]);
+  console.log(votes);
   return (
     <div className="votesComponent">
-      <button class="voteBtn" id="upvoteBtn">
+      <button className="voteBtn" id="upvoteBtn">
         <img
           alt="upvote"
           src="https://img.icons8.com/material/24/000000/up--v2.png"
         />
       </button>
-      <h6>150</h6>
-      <button class="voteBtn" id="downvoteBtn">
+      {votes ? <h4>{votes.length}</h4> : null}
+      <button className="voteBtn" id="downvoteBtn">
         <img
           alt="downvote"
           src="https://img.icons8.com/material/24/000000/down--v2.png"
@@ -27,15 +30,3 @@ export default function Votes({ post_id }) {
     </div>
   );
 }
-
-// import React, { useEffect } from "react";
-// import Linkify from "linkifyjs/react";
-// import { useSelector, useDispatch } from "react-redux";
-// import { selectPosts, fetchAllPosts } from "./postsSlice";
-
-// export default function Home() {
-//   const dispatch = useDispatch();
-
-//   useEffect(() => {
-//     dispatch(fetchAllPosts());
-//   }, []);

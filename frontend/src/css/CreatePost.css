@@ -1,0 +1,195 @@
+.createPost {
+  background: #ccc;
+  padding-top: 8px;
+  display: grid;
+  grid-template-columns: 65vw 35vw;
+  height: 100vh;
+}
+
+hr {
+  border-color: grey;
+}
+
+.leftCreateDiv {
+  margin-left: 20%;
+  margin-right: 10%;
+}
+
+#postForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+#submemmitSelect {
+  font-size: 16px;
+  font-weight: 500;
+  width: 40%;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 50px;
+  background: #ffffff;
+  border-style: none;
+  outline: none;
+  margin-bottom: 10px;
+}
+
+.titleSection {
+  display: flex;
+  flex-direction: row;
+}
+
+#uploadBtn {
+  height: 50px;
+  width: 50px;
+}
+
+.uploadContainer .uploadText {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: white;
+  opacity: 80%;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 1;
+}
+
+.uploadContainer:hover .uploadText {
+  visibility: visible;
+}
+
+#titleInput {
+  font-family: inherit;
+  font-size: 18px;
+  padding: 10px;
+  height: 30px;
+  width: 40%;
+  border-style: none;
+  border-radius: 5px;
+  outline: none;
+  margin-right: 8px;
+}
+
+#titleInput::placeholder {
+  font-family: inherit;
+  font-size: 18px;
+}
+
+#textArea {
+  margin-top: 8px;
+  padding: 10px;
+  font-family: inherit;
+  font-size: 18px;
+  height: 400px;
+  width: 80%;
+  border-style: none;
+  border-radius: 5px;
+  outline: none;
+}
+
+#textArea::placeholder {
+  font-family: inherit;
+  font-size: 18px;
+}
+
+.cancelBtn {
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  text-align: center;
+  letter-spacing: 1px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 24px;
+  padding: 3px 16px;
+  text-transform: uppercase;
+  border-color: #0079d3;
+  color: #0079d3;
+  border-radius: 2.5px;
+  background-color: #fff;
+  cursor: pointer;
+  line-height: unset;
+  height: 38px;
+  width: 155px;
+  min-width: 155px;
+  overflow: inherit;
+  position: relative;
+}
+
+.cancelBtn:hover {
+  opacity: 0.5;
+}
+
+.createPostBtns {
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: 60% 22.2%;
+  justify-items: end;
+}
+
+@media only screen and (max-width: 1500px) {
+  .createPostBtns {
+    margin-top: 8px;
+    display: grid;
+    grid-template-columns: 60%;
+    align-content: center;
+    justify-items: center;
+    grid-gap: 8px;
+  }
+}
+
+.rulesDiv {
+  background: #fff;
+  border-radius: 5px;
+  margin-top: 15px;
+  padding: 12px;
+  width: 50%;
+  height: 55%;
+}
+
+.topSection {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  align-content: center;
+}
+
+#snooWinkImg {
+  height: 65px;
+}
+
+@media only screen and (max-width: 1600px) {
+  .rulesDiv {
+    background: #fff;
+    border-radius: 5px;
+    margin-top: 15px;
+    padding: 12px;
+    width: 50%;
+    height: 80%;
+  }
+  .topSection {
+    display: grid;
+    grid-template-columns: 100%;
+    align-content: center;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .rulesDiv {
+    background: #fff;
+    border-radius: 5px;
+    margin-top: 15px;
+    padding: 12px;
+    width: 50%;
+    height: 100%;
+  }
+  .topSection {
+    display: grid;
+    grid-template-columns: 100%;
+    align-content: center;
+  }
+}

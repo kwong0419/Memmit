@@ -4,10 +4,10 @@ import axios from "axios";
 
 const API = apiURL();
 
-export const fetchAllVotes = async (dispatch) => {
+export const fetchAllVotes = (postId) => async (dispatch) => {
   try {
-    let res = await axios.get(`${API}/votes/post/`);
-    dispatch(receiveAllVotes(res.data));
+    let res = await axios.get(`${API}/votes/post/${postId}`);
+    dispatch(receiveAllVotes(res.data.body));
   } catch (error) {
     console.log(error);
   }
@@ -15,13 +15,15 @@ export const fetchAllVotes = async (dispatch) => {
 
 export const votesSlice = createSlice({
   name: "votes",
-  initialState: [],
+  initialState: {},
   reducers: {
-    receiveAllVotes: (state, action) => action.payload,
+    receiveAllVotes: (state, action) => {
+      let postId = action.payload.searchPostID;
+      let votes = action.payload.result;
+      state[postId] = votes;
+    },
   },
 });
-
-export const selectVotes = (state) => state.votes;
 
 export const { receiveAllVotes } = votesSlice.actions;
 export default votesSlice.reducer;

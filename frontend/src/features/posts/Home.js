@@ -12,11 +12,11 @@ export default function Home() {
   const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
-    if (currentUser) {
-      dispatch(fetchAllPostsAuth);
-    } else {
-      dispatch(fetchAllPosts());
-    }
+    // if (currentUser) {
+    // dispatch(fetchAllPostsAuth);
+    // } else {
+    dispatch(fetchAllPosts());
+    // }
   }, []);
 
   const posts = useSelector(selectPosts);
@@ -27,9 +27,10 @@ export default function Home() {
         {posts.map((post) => {
           let dateTime = post.timestamp;
           dateTime = new Date();
+
           return (
-            <div className="post" key={post.id}>
-              <Votes post_id={post.id} />
+            <div className="post" key={post.post_id}>
+              <Votes post_id={post.post_id} />
               <div className="postComponent">
                 <p>
                   <strong>m/{post.submemmit_name} •</strong> Posted by /u/
