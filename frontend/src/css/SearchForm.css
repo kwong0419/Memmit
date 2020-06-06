@@ -1,0 +1,28 @@
+.search {
+  display: grid;
+  grid-template-columns: repeat(2, 0.1fr);
+  grid-gap: 2px;
+  width: 270px;
+  border: 1px solid #dae0f9;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background: #dae0e6;
+}
+
+#searchIcon {
+  display: grid;
+  justify-self: left;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  background: #dae0e6;
+}
+
+#searchInput {
+  font: inherit;
+  font-size: 16px;
+  border: none;
+  width: auto;
+  background: #dae0e6;
+  outline: none;
+}

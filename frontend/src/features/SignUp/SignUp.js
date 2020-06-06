@@ -3,7 +3,8 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { apiURL } from "../../util/apiURL";
 import { signUp } from "../../util/firebaseFunctions";
-import "../../css/SignUp.css";
+import "../../css/LoginSignup.css";
+import { NavLink } from "react-router-dom";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
@@ -20,7 +21,7 @@ export default function SignUp() {
       if (usernameAuth.data.status === "Success") {
         setError("Username already exists. Please try another username");
       } else {
-        let res = await signUp(email, password);
+        await signUp(email, password);
         await axios.post(`${API}/users`, { email, username, password });
         history.push("/");
       }
@@ -30,37 +31,60 @@ export default function SignUp() {
   };
 
   return (
-    <>
-      <h1>Sign Up!</h1>
-      {error ? <div>{error}</div> : null}
-      <form className="signUpForm" onSubmit={handleSubmit}>
-        <label for="signUpEmail">Email: </label>
-        <input
-          required
-          id="signUpEmail"
-          value={email}
-          placeholder="Email"
-          onChange={(e) => setEmail(e.currentTarget.value)}
+    <div className="signup">
+      <img
+        className="banner1"
+        alt="art"
+        src="https://www.redditstatic.com/accountmanager/bbb584033aa89e39bad69436c504c9bd.png"
+      />
+      <div className="formDiv">
+        <img
+          className="logoForm"
+          alt="logo"
+          src="https://www.redditinc.com/assets/images/site/reddit-logo.png"
         />
-        <label for="signUpUsername">Username: </label>
-        <input
-          required
-          id="signUpUsername"
-          value={username}
-          placeholder="Username"
-          onChange={(e) => setUsername(e.currentTarget.value)}
-        />
-        <label for="signUpPassword">Password: </label>
-        <input
-          required
-          id="signUpPassword"
-          type="password"
-          value={password}
-          placeholder="Password"
-          onChange={(e) => setPassword(e.currentTarget.value)}
-        />
-        <button type="submit">Sign Up</button>
-      </form>
-    </>
+        <h1>Create an Account</h1>
+        {error ? <div>{error}</div> : null}
+        <form className="form" onSubmit={handleSubmit}>
+          <input
+            required
+            id="signupEmail"
+            value={email}
+            placeholder="Email"
+            onChange={(e) => setEmail(e.currentTarget.value)}
+          />
+          <br />
+          <br />
+          <input
+            required
+            id="signupUsername"
+            value={username}
+            placeholder="Username"
+            onChange={(e) => setUsername(e.currentTarget.value)}
+          />
+          <br />
+          <br />
+          <input
+            required
+            id="signupPassword"
+            type="password"
+            value={password}
+            placeholder="Password"
+            onChange={(e) => setPassword(e.currentTarget.value)}
+          />
+          <br />
+          <br />
+          <button id="signupBtn" type="submit">
+            Sign Up
+          </button>
+          <br />
+          <br />
+          <div className="bottomLink">
+            <p>Already a redditor?</p>
+            <NavLink to={"/login"}>LOGIN</NavLink>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }

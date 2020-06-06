@@ -1,0 +1,116 @@
+/* LOG IN */
+
+.login,
+.signup {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 156px auto;
+}
+
+.banner1 {
+  width: 156px;
+  display: block;
+  box-sizing: border-box;
+  height: 100vh;
+  min-height: 450px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.formDiv {
+  margin: 50px;
+  width: 100%;
+  grid-gap: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  color: #1a1a1a;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.form {
+  min-width: 260px;
+  max-width: 440px;
+}
+
+.logoForm {
+  height: 40px;
+  width: 40px;
+}
+
+#loginEmail:focus,
+#loginPassword:focus,
+#signupEmail:focus,
+#signupUsername:focus,
+#signupPassword:focus {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  outline: 0;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: all 0.5s ease-in-out;
+  height: 40px;
+  padding: 22px 12px 10px;
+  border: 1px solid #1a1a1a;
+  border-radius: 4px;
+  background-color: #fcfcfb;
+}
+
+#loginEmail::placeholder,
+#loginPassword::placeholder,
+#signupEmail::placeholder,
+#signupUsername::placeholder,
+#signupPassword::placeholder {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  line-height: 12px;
+  position: absolute;
+  display: inline-block;
+  vertical-align: middle;
+  top: 14px;
+  left: 12px;
+  color: #a5a4a4;
+  text-transform: uppercase;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  transition: all 0.5s ease-in-out;
+  pointer-events: none;
+  line-height: 23px;
+}
+
+#loginBtn,
+#signupBtn {
+  font-family: "IBMPlexSans", sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  line-height: 32px;
+  color: #fff;
+  display: inline-block;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+  background: #0079d3;
+  text-transform: uppercase;
+  cursor: pointer;
+  line-height: unset;
+  height: 35px;
+  width: 155px;
+  min-width: 155px;
+  overflow: inherit;
+  position: relative;
+}
+
+#loginBtn:hover {
+  opacity: 75%;
+}
+
+.bottomLink {
+  display: grid;
+  grid-template-columns: 125px 125px;
+  align-items: center;
+}

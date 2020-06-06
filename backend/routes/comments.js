@@ -7,6 +7,8 @@ const {
   deleteSingleComment,
 } = require("../queries/commentsQueries");
 
+const { checkFirebaseToken } = require("../middleware/auth");
+
 comments.get("/post/:post_id", getAllCommentsFromSinglePost);
 comments.post("/post/:post_id/:author_id", addSingleComment);
 comments.patch("/:post_id/:author_id", editSingleComment);

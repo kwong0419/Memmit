@@ -1,5 +1,23 @@
 const db = require("../db/index");
 
+const getAllPosts = async (req, res, next) => {
+  try {
+    res.status(200).json({
+      status: "Success",
+      message: "get ALL posts with users",
+      body: {
+        posts: await db.any(
+          "SELECT submemmit_id, name AS submemmit_name, post_id, users_posts.owner_id, title, image_url, body, timestamp, user_id, username FROM submemmits INNER JOIN (SELECT posts.id AS post_id, owner_id, submemmit_id, title, image_url, body, timestamp, users.id AS user_id, username FROM posts INNER JOIN users ON posts.owner_id = users.id) AS users_posts ON submemmits.id = users_posts.submemmit_id ORDER BY post_id DESC"
+        ),
+      },
+    });
+  } catch (error) {
+    res.json({
+      error: error,
+    });
+  }
+};
+
 const getAllPostsForSubscribedSubmemmits = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -9,7 +27,7 @@ const getAllPostsForSubscribedSubmemmits = async (req, res, next) => {
       body: {
         userID: id,
         posts: await db.any(
-          "SELECT posts.id AS post_id, posts.owner_id AS post_owner_id, submemmit_id, image_url, body, timestamp, username, name AS submemmit_name, userID  FROM posts INNER JOIN (SELECT * FROM users JOIN (SELECT * FROM submemmits JOIN subscriptions ON submemmits.id = subscriptions.submemmitID) AS subscribed_submemmits ON users.id = subscribed_submemmits.userID) AS users_subscriptions_submemmits ON posts.submemmit_id = users_subscriptions_submemmits.submemmitID WHERE userID = $1",
+          "SELECT * FROM subscriptions INNER JOIN (SELECT submemmit_id, name AS submemmit_name, post_id, users_posts.owner_id, title, image_url, body, timestamp, user_id, username FROM submemmits INNER JOIN (SELECT posts.id AS post_id, owner_id, submemmit_id, title, image_url, body, timestamp, users.id AS user_id, username FROM posts INNER JOIN users ON posts.owner_id = users.id) AS users_posts ON submemmits.id = users_posts.submemmit_id) AS all_posts ON subscriptions.submemmitID = all_posts.submemmit_id WHERE userID = $1 ORDER BY posts_id DESC",
           [id]
         ),
       },
@@ -81,6 +99,7 @@ const deleteSinglePost = async (req, res, next) => {
 };
 
 module.exports = {
+  getAllPosts,
   getAllPostsForSubscribedSubmemmits,
   getAllPostsBySingleUser,
   insertSinglePost,

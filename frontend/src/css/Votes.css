@@ -1,0 +1,19 @@
+.votesComponent {
+  -ms-flex-align: center;
+  align-items: center;
+  display: -ms-flexbox;
+  display: flex;
+  fill: inherit;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-top: 8px;
+  background: #f6f6f6;
+  border-radius: 5px;
+}
+
+.voteBtn {
+  border-style: none;
+  background: #f6f6f6;
+  border-radius: 5px;
+  outline: none;
+}

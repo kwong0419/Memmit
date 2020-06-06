@@ -1,0 +1,131 @@
+.home {
+  background: #ccc;
+  padding-top: 8px;
+  display: grid;
+  grid-template-columns: 65vw 35vw;
+}
+
+.post {
+  font: inherit;
+  display: grid;
+  grid-template-columns: 50px auto;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-left: 25%;
+  margin-right: 5%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fff;
+}
+
+.postComponent {
+  display: grid;
+  grid-template-rows: repeat(4, 0.05fr);
+  padding: 5px;
+}
+
+#postImage {
+  margin: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.createDiv {
+  margin-top: 8px;
+  margin-right: 100px;
+  background: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+#banner2 {
+  width: 100%;
+}
+
+.midSection {
+  display: grid;
+  grid-template-columns: 20% auto;
+  margin: 12px;
+}
+
+#snooImg {
+  height: 136px;
+  width: 80px;
+}
+
+.midDescription {
+  margin-left: 12px;
+  display: grid;
+  grid-template-rows: repeat(2, 0.01fr);
+  align-content: center;
+}
+
+#postBtn {
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  text-align: center;
+  letter-spacing: 1px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 3px 16px;
+  text-transform: uppercase;
+  border-color: #0079d3;
+  color: white;
+  border-radius: 2.5px;
+  background-color: #0079d3;
+}
+
+#postBtn:hover {
+  opacity: 75%;
+}
+
+#submemmitBtn {
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  text-align: center;
+  letter-spacing: 1px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 3px 16px;
+  text-transform: uppercase;
+  border-color: #0079d3;
+  color: #0079d3;
+  border-radius: 2.5px;
+  background-color: transparent;
+}
+
+#submemmitBtn:hover {
+  opacity: 0.5;
+}
+
+.createBtn {
+  margin: 10px 15% 10px 15%;
+  width: 70%;
+  height: 40px;
+}
+
+#backtopBtn {
+  margin-right: 25%;
+  margin-left: 25%;
+  top: calc(100vh - 40px);
+  position: sticky;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  text-align: center;
+  letter-spacing: 1px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 3px 16px;
+  text-transform: uppercase;
+  border-color: #0079d3;
+  color: white;
+  border-radius: 2.5px;
+  background-color: #0079d3;
+}

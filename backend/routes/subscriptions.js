@@ -6,6 +6,8 @@ const {
   deleteSingleSubscription,
 } = require("../queries/subscriptionQueries");
 
+const { checkFirebaseToken } = require("../middleware/auth");
+
 subscriptions.get("/", getAllSubscriptions);
 subscriptions.post(
   "/submemmit/:submemmitID/user/:userID",
