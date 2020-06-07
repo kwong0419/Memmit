@@ -1,8 +1,15 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  selectSubmemmits,
+  fetchAllSubmemmits,
+} from "../submemmits/submemmitsSlice";
 import "../../css/CreatePost.css";
 import { NavLink } from "react-router-dom";
 
 export default function CreatePost() {
+  const submemmits = useSelector(selectSubmemmits);
+
   return (
     <div className="createPost">
       <div className="leftCreateDiv">
@@ -10,7 +17,7 @@ export default function CreatePost() {
         <hr style={{ borderTop: "#fff", borderColor: "#fff" }} />
         <form id="postForm">
           <select name="submemmitList" id="submemmitSelect">
-            <option selected disabled value={1}>
+            <option selected disabled value="">
               Choose a community
             </option>
           </select>

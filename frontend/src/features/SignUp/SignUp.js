@@ -28,7 +28,6 @@ export default function SignUp() {
           username,
           password,
         });
-        debugger;
         history.push("/");
       }
     } catch (err) {

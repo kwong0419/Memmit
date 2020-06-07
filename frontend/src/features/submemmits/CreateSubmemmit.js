@@ -1,8 +1,37 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import axios from "axios";
+import { apiURL } from "../../util/apiURL";
+import { AuthContext } from "../../providers/AuthContext";
 import "../../css/CreateSubmemmit.css";
-import { addSubmemmit } from "./submemmitsSlice";
+const API = apiURL();
 
 export default function CreateSubmemmit() {
+  const { currentUser } = useContext(AuthContext);
+  const [name, setName] = useState("");
+  const [alert, setAlert] = useState("");
+
+  const addSubmemmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post(`${API}/submemmits`, {
+        name: name,
+        owner_id: currentUser.id,
+      });
+      if (res.data.error) {
+        if (res.data.error["detail"].includes("exists.")) {
+          setAlert(
+            "Submemmit name already exists. Please chooser another name"
+          );
+        }
+      } else {
+        setAlert("Submemmit has successfully been created.");
+      }
+      setName("");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="createSubmemmit">
       <img
@@ -10,15 +39,26 @@ export default function CreateSubmemmit() {
         alt="communityBanner"
         src="https://www.redditstatic.com/desktop2x/img/partner-connection.png"
       />
-      <form className="formDiv">
+      <form className="formDiv" onSubmit={addSubmemmit}>
         <h1>Create a Submemmit Community</h1>
         <input
           id="submemmitNameInput"
           type="text"
           placeholder="Submemmit Name"
+          required
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
         />
         <br />
         <br />
+        {alert ? (
+          <>
+            <h4 style={{ color: "red" }}>{alert}</h4>
+            <br />
+            <br />
+          </>
+        ) : null}
         <button className="submitBtn" type="submit">
           CREATE
         </button>
