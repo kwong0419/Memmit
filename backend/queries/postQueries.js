@@ -61,10 +61,10 @@ const getAllPostsBySingleUser = async (req, res, next) => {
 
 const insertSinglePost = async (req, res, next) => {
   try {
-    let { owner_id, submemmit_id, image_url, body } = req.body;
+    let { owner_id, submemmit_id, title, image_url, body } = req.body;
     let single_post = await db.one(
-      "INSERT INTO posts (owner_id, submemmit_id, image_url, body) VALUES ($1, $2, $3, $4) RETURNING *",
-      [owner_id, submemmit_id, image_url, body]
+      "INSERT INTO posts (owner_id, submemmit_id, title, image_url, body) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+      [owner_id, submemmit_id, title, image_url, body]
     );
     res.status(200).json({
       status: "Success",

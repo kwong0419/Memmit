@@ -36,7 +36,7 @@ export default function Home() {
                 </p>
                 <h3>{post.title}</h3>
                 {post.image_url ? (
-                  <img alt="" id="postImage" src={post.image_url} />
+                  <img src={post.image_url} alt="" id="postImage" />
                 ) : null}
                 <Linkify tagName="p">{post.body}</Linkify>
               </div>

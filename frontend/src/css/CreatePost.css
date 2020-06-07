@@ -6,7 +6,12 @@
   height: 100vh;
 }
 
-hr {
+#whiteline {
+  border-top: #fff;
+  border-color: #fff;
+}
+
+.greyline {
   border: 0;
   border-top: 1px solid #ccc;
   height: 1px;
