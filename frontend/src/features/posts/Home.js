@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import Linkify from "linkifyjs/react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectPosts, fetchAllPosts, fetchAllPostsAuth } from "./postsSlice";
+import { selectPosts, fetchAllPosts } from "./postsSlice";
 import { AuthContext } from "../../providers/AuthContext";
 import { NavLink } from "react-router-dom";
 import Votes from "../votes/Votes";
@@ -11,6 +11,7 @@ export default function Home() {
   const dispatch = useDispatch();
   const { currentUser } = useContext(AuthContext);
 
+  const posts = useSelector(selectPosts);
   useEffect(() => {
     // if (currentUser) {
     // dispatch(fetchAllPostsAuth);
@@ -19,18 +20,15 @@ export default function Home() {
     // }
   }, []);
 
-  const posts = useSelector(selectPosts);
-
   return (
     <div className="home">
       <div className="leftContainer">
         {posts.map((post) => {
           let dateTime = post.timestamp;
           dateTime = new Date();
-
           return (
             <div className="post" key={post.post_id}>
-              <Votes post_id={post.post_id} />
+              <Votes post_id={post.post_id} fetchAllPosts={fetchAllPosts} />
               <div className="postComponent">
                 <p>
                   <strong>m/{post.submemmit_name} •</strong> Posted by /u/

@@ -4,11 +4,11 @@ const checkFirebaseToken = async (req, res, next) => {
   try {
     const token = req.headers.authtoken;
     const decodedToken = await admin.auth().verifyIdToken(token);
-    const id = decodedToken.id;
-    req.user_id = id;
+    const uid = decodedToken.uid;
+    req.user_id = uid;
     next();
   } catch (err) {
-    console.log("Error: ", err);
+    console.log("Error: Code Broke!", err);
     res.status(401).json({ message: "No Authenticated User!" });
   }
 };

@@ -21,8 +21,14 @@ export default function SignUp() {
       if (usernameAuth.data.status === "Success") {
         setError("Username already exists. Please try another username");
       } else {
-        await signUp(email, password);
-        await axios.post(`${API}/users`, { email, username, password });
+        let res = await signUp(email, password);
+        await axios.post(`${API}/users`, {
+          id: res.user.uid,
+          email,
+          username,
+          password,
+        });
+        debugger;
         history.push("/");
       }
     } catch (err) {

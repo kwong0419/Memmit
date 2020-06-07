@@ -1,5 +1,6 @@
 import React from "react";
 import "../../css/CreateSubmemmit.css";
+import { addSubmemmit } from "./submemmitsSlice";
 
 export default function CreateSubmemmit() {
   return (

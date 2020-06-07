@@ -7,14 +7,12 @@ export const submemmitsSlice = createSlice({
   name: "submemmits",
   initialState: [],
   reducers: {
-    addPost: (state, action) => {
-      state.push(action.payload);
-    },
+    addSubmemmit: (state, action) => state.push(action.payload),
     receiveAllSubmemmits: (state, action) => action.payload,
   },
 });
 
 export const selectSubmemmits = (state) => state.submemmits;
 
-export const { addPost, receiveAllSubmemmits } = submemmitsSlice.actions;
+export const { addSubmemmit, receiveAllSubmemmits } = submemmitsSlice.actions;
 export default submemmitsSlice.reducer;

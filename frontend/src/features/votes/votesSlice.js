@@ -17,7 +17,6 @@ export const votesSlice = createSlice({
   name: "votes",
   initialState: {},
   reducers: {
-    addVote: (state, action) => state.push(action.payload),
     receiveAllVotes: (state, action) => {
       let postId = action.payload.searchPostID;
       let votes = action.payload.result;
