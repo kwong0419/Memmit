@@ -7,7 +7,9 @@
 }
 
 hr {
-  border-color: grey;
+  border: 0;
+  border-top: 1px solid #ccc;
+  height: 1px;
 }
 
 .leftCreateDiv {
