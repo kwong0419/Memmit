@@ -3,11 +3,13 @@ import Linkify from "linkifyjs/react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectPosts, fetchAllPosts } from "./postsSlice";
 import { AuthContext } from "../../providers/AuthContext";
+import { apiURL } from "../../util/apiURL";
 import { NavLink } from "react-router-dom";
 import Votes from "../votes/Votes";
 import "../../css/Home.css";
 
 export default function Home() {
+  const API = apiURL();
   const dispatch = useDispatch();
   const { currentUser } = useContext(AuthContext);
 
@@ -36,7 +38,7 @@ export default function Home() {
                 </p>
                 <h3>{post.title}</h3>
                 {post.image_url ? (
-                  <img src={post.image_url} alt="" id="postImage" />
+                  <img src={`${API}/${post.image_url}`} alt="" id="postImage" />
                 ) : null}
                 <Linkify tagName="p">{post.body}</Linkify>
               </div>
