@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { fetchAllVotes } from "./votesSlice";
 import "../../css/Votes.css";
 import { AuthContext } from "../../providers/AuthContext";
@@ -10,34 +11,43 @@ const API = apiURL();
 export default function Votes({ post_id }) {
   const { currentUser, token } = useContext(AuthContext);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const upVotePost = async () => {
-    try {
-      await axios({
-        method: "post",
-        url: `${API}/votes/post/${post_id}/${currentUser.id}`,
-        headers: {
-          AuthToken: token,
-        },
-      });
-      dispatch(fetchAllVotes(post_id));
-    } catch (error) {
-      console.log(error);
+    if (currentUser && token) {
+      try {
+        await axios({
+          method: "post",
+          url: `${API}/votes/post/${post_id}/${currentUser.id}`,
+          headers: {
+            AuthToken: token,
+          },
+        });
+        dispatch(fetchAllVotes(post_id));
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      history.push("/login");
     }
   };
 
   const downVotePost = async () => {
-    try {
-      await axios({
-        method: "delete",
-        url: `${API}/votes/post/${post_id}/${currentUser.id}`,
-        headers: {
-          AuthToken: token,
-        },
-      });
-      dispatch(fetchAllVotes(post_id));
-    } catch (error) {
-      console.log(error);
+    if (currentUser && token) {
+      try {
+        await axios({
+          method: "delete",
+          url: `${API}/votes/post/${post_id}/${currentUser.id}`,
+          headers: {
+            AuthToken: token,
+          },
+        });
+        dispatch(fetchAllVotes(post_id));
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      history.push("/login");
     }
   };
 

@@ -110,9 +110,10 @@
 }
 
 #backtopBtn {
+  margin-top: 8px;
   margin-right: 25%;
   margin-left: 25%;
-  top: calc(100vh - 40px);
+  top: 10px;
   position: sticky;
   border: 1px solid transparent;
   box-sizing: border-box;

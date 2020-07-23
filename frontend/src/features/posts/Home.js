@@ -37,7 +37,10 @@ export default function Home() {
                   {post.username} on {dateTime.toDateString()}
                 </p>
                 <h3>{post.title}</h3>
-                {post.image_url ? (
+                {post.image_url.includes("https") ? (
+                  <img src={post.image_url} alt="" id="postImage" />
+                ) : null}
+                {post.image_url.includes("/uploads/") ? (
                   <img src={`${API}/${post.image_url}`} alt="" id="postImage" />
                 ) : null}
                 <Linkify tagName="p">{post.body}</Linkify>
