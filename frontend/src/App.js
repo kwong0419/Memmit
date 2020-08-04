@@ -7,6 +7,7 @@ import SignUp from "./features/signUp/SignUp";
 import CreatePost from "./features/posts/CreatePost";
 import CreateSubmemmit from "./features/submemmits/CreateSubmemmit";
 import SearchedPosts from "./features/search/SearchedPosts";
+import Submemmit from "./features/submemmits/Submemmit";
 import "./App.css";
 import AuthProvider from "./providers/AuthContext";
 import { AuthRoute, ProtectedRoute } from "./util/routesUtil";
@@ -21,6 +22,9 @@ function App() {
         </Route>
         <Route exact path="/search">
           <SearchedPosts />
+        </Route>
+        <Route exact path="/submemmit">
+          <Submemmit />
         </Route>
         <ProtectedRoute exact path="/createSubmemmit">
           <CreateSubmemmit />
