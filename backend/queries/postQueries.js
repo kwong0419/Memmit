@@ -98,10 +98,32 @@ const deleteSinglePost = async (req, res, next) => {
   }
 };
 
+const getAllSearchedPosts = async (req, res, next) => {
+  let { input } = req.params;
+  try {
+    let search = await db.any(
+      "SELECT submemmit_id, name AS submemmit_name, post_id, users_posts.owner_id, title, image_url, body, timestamp, user_id, username FROM submemmits INNER JOIN (SELECT posts.id AS post_id, owner_id, submemmit_id, title, image_url, body, timestamp, users.id AS user_id, username FROM posts INNER JOIN users ON posts.owner_id = users.id) AS users_posts ON submemmits.id = users_posts.submemmit_id WHERE title LIKE $1 OR submemmits.name LIKE $1 ORDER BY post_id DESC",
+      ["%" + input + "%"]
+    );
+    res.status(200).json({
+      status: "Success",
+      message: "Got all searched posts by: " + input,
+      body: {
+        search,
+      },
+    });
+  } catch (error) {
+    res.json({
+      error: error,
+    });
+  }
+};
+
 module.exports = {
   getAllPosts,
   getAllPostsForSubscribedSubmemmits,
   getAllPostsBySingleUser,
   insertSinglePost,
   deleteSinglePost,
+  getAllSearchedPosts,
 };
