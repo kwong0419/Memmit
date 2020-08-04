@@ -19,6 +19,7 @@ export default function SearchForm() {
       let res = await axios.get(`${API}/posts/search/${input}`);
       dispatch(receiveAllSearchedPosts(res.data.body.search));
       history.push("/search");
+      setInput("");
     } catch (err) {
       console.log(err);
     }

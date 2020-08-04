@@ -23,8 +23,6 @@ export default function SearchedPosts() {
     // }
   }, []);
 
-  debugger;
-
   return (
     <div className="home">
       <div className="leftContainer">
@@ -57,7 +55,10 @@ export default function SearchedPosts() {
             );
           })
         ) : (
-          <h1>No results found</h1>
+          <div className="searchErrorContainer">
+            <img src="https://preview.redd.it/hhwmkzqpqzpz.jpg?auto=webp&s=e0483f15583ed40c8f81a6e9d9c89bda11446dd4" />
+            <p id="searchErrorMsg">Sorry, there were no results found!</p>
+          </div>
         )}
       </div>
       <div className="rightContainer">

@@ -17,10 +17,14 @@ export const submemmitsSlice = createSlice({
   initialState: [],
   reducers: {
     receiveAllSubmemmits: (state, action) => action.payload,
+    receiveSingleSubmemmit: (state, action) => action.payload,
   },
 });
 
 export const selectSubmemmits = (state) => state.submemmits;
 
-export const { receiveAllSubmemmits } = submemmitsSlice.actions;
+export const {
+  receiveAllSubmemmits,
+  receiveSingleSubmemmit,
+} = submemmitsSlice.actions;
 export default submemmitsSlice.reducer;

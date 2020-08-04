@@ -130,3 +130,23 @@
   border-radius: 2.5px;
   background-color: #0079d3;
 }
+
+.searchErrorContainer {
+  background-color: white;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+#searchErrorMsg {
+  text-align: center;
+  width: 100%;
+  font: inherit;
+  font-weight: 800;
+}
