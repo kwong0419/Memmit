@@ -1,8 +1,11 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
+import Upload from "../posts/Upload";
 import { apiURL } from "../../util/apiURL";
 import { AuthContext } from "../../providers/AuthContext";
 import "../../css/CreateSubmemmit.css";
+import { useHistory } from "react-router-dom";
+
 const API = apiURL();
 
 export default function CreateSubmemmit() {
@@ -10,28 +13,40 @@ export default function CreateSubmemmit() {
   const [name, setName] = useState("");
   const [about, setAbout] = useState("");
   const [alert, setAlert] = useState("");
+  const [path, setPath] = useState("");
+
+  const history = useHistory();
 
   const addSubmemmit = async (e) => {
     e.preventDefault();
-    try {
-      const res = await axios.post(`${API}/submemmits`, {
-        name: name,
-        owner_id: currentUser.id,
-        about: about,
-      });
-      if (res.data.error) {
-        if (res.data.error["detail"].includes("exists.")) {
-          setAlert(
-            "Submemmit name already exists. Please chooser another name"
-          );
+    if (name && path && about) {
+      try {
+        const res = await axios.post(`${API}/submemmits`, {
+          name: name,
+          owner_id: currentUser.id,
+          banner_pic_url: path,
+          about_community: about,
+        });
+        if (res.data.error) {
+          if (res.data.error["detail"].includes("exists.")) {
+            setAlert(
+              "Submemmit name already exists. Please chooser another name"
+            );
+          }
+        } else {
+          setAlert("Submemmit has successfully been created.");
+          const { id } = res.data.body.submemmits[0];
+          setTimeout(() => {
+            history.push(`/submemmit/${id}`);
+          }, 1250);
         }
-      } else {
-        setAlert("Submemmit has successfully been created.");
+        setName("");
+        setAbout("");
+      } catch (error) {
+        console.log(error);
       }
-      setName("");
-      setAbout("");
-    } catch (error) {
-      console.log(error);
+    } else {
+      setAlert("Please fill out all fields and upload a banner picture");
     }
   };
 
@@ -64,6 +79,9 @@ export default function CreateSubmemmit() {
             setAbout(e.target.value);
           }}
         />
+        <div className="uploadContainer">
+          <Upload cb={setPath} />
+        </div>
         <br />
         <br />
         {alert ? (

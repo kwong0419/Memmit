@@ -1,0 +1,17 @@
+#uploadForm {
+  display: flex;
+  flex-direction: column;
+}
+
+#uploadBtn:hover {
+  opacity: 80%;
+}
+
+#imageInput {
+  visibility: hidden;
+}
+
+#uploadSuccess {
+  font-family: inherit;
+  font-size: 20px;
+}

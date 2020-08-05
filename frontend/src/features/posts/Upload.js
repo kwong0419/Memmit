@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { storage } from "../../firebase";
+import "../../css/Upload.css";
 
 const Upload = ({ cb }) => {
-  // const [file, setFile] = useState("");
-  // const [errorMessage, setErrorMessage] = useState("");
-  // const [toggle, setToggle] = useState(false);
-
-  //imageUpload
   const [file, setFile] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [toggle, setToggle] = useState(false);
@@ -80,6 +76,7 @@ const Upload = ({ cb }) => {
 
   return (
     <form
+      id="uploadForm"
       onSubmit={(e) => {
         handleFirebaseUpload(e, cb);
       }}
@@ -97,7 +94,6 @@ const Upload = ({ cb }) => {
         id="imageInput"
         name="imageUpload"
         onChange={handleFileChange}
-        style={{ visibility: "hidden" }}
       />
       {toggle ? (
         <button className="cancelBtn" type="submit">
