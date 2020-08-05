@@ -10,18 +10,18 @@ import "../../css/Home.css";
 
 export default function SearchedPosts() {
   const API = apiURL();
-  const dispatch = useDispatch();
-  const { currentUser } = useContext(AuthContext);
+  //   const dispatch = useDispatch();
+  //   const { currentUser } = useContext(AuthContext);
 
   const searchedPosts = useSelector(selectSearchedPosts);
 
-  useEffect(() => {
-    // if (currentUser) {
-    // dispatch(fetchAllPostsAuth);
-    // } else {
-    // dispatch();
-    // }
-  }, []);
+  //   useEffect(() => {
+  // if (currentUser) {
+  // dispatch(fetchAllPostsAuth);
+  // } else {
+  // dispatch();
+  // }
+  //   }, []);
 
   return (
     <div className="home">

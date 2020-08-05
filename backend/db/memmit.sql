@@ -103,7 +103,7 @@ VALUES
     ('E9zSOjRa2IVCrEAWfdxWaJXtwJ83', 1, 'Zoom be like', 'https://stayhipp.com/wp-content/uploads/2020/03/Untitled-1-1.jpg', 'Daily Meme 2'),
     ('FyN8cjUNofPTd6WwXTGV0R7Czjg2', 1, 'Yas Queen', 'https://preview.redd.it/04h207d30d051.jpg?width=640&crop=smart&auto=webp&s=76bb207bae9efd2ed347d89f7317f83e7e96851d', 'Daily Meme 1'),
     ('E9zSOjRa2IVCrEAWfdxWaJXtwJ83', 2, 'So cute', 'https://static.boredpanda.com/blog/wp-content/uploads/2018/05/funny-shiba-inu-8-5ae806af8fa83__700.gif', 'Look at this shiba-ssant!'),
-    ('FyN8cjUNofPTd6WwXTGV0R7Czjg2', 2, 'About 8 years ago...', 'https://scontent-lga3-1.xx.fbcdn.net/v/t31.0-8/459095_10151201570066088_880374472_o.jpg?_nc_cat=108&_nc_sid=cdbe9c&_nc_ohc=y20HTwjmVAUAX9_cxP9&_nc_ht=scontent-lga3-1.xx&oh=f5d9a5a68661501581f3c9133dd31620&oe=5EEFDA3A', 'This is my shiba-inu Yuki'),
+    ('FyN8cjUNofPTd6WwXTGV0R7Czjg2', 2, 'About 8 years ago...', 'https://i.ibb.co/ctdpcGH/Baby-Yuki.png', 'This is my shiba-inu Yuki'),
     ('E9zSOjRa2IVCrEAWfdxWaJXtwJ83', 2, 'Keep smiling!', 'https://justsomething.co/wp-content/uploads/2015/08/this-shiba-inu-stuck-in-a-bush-will-teach-you-a-funny-lesson.jpg', 'Funny shiba gets stuck in bush, keeps smiling'),
     ('E9zSOjRa2IVCrEAWfdxWaJXtwJ83', 3, 'Tree that looks like 3d computer art', 'https://i.redd.it/zhf0o57gfb051.jpg', 'A tree that looks like 3d computer art'),
     ('FyN8cjUNofPTd6WwXTGV0R7Czjg2', 3, 'Having lunch... wait a minute', 'https://preview.redd.it/xf8pibmwqd051.jpg?width=640&crop=smart&auto=webp&s=b94a5ebb32a46bd091acccb3f7d82bea0d53151b', 'Squirrel approves of the bench built for it'),
