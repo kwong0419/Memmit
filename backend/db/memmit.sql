@@ -1,7 +1,7 @@
--- DROP DATABASE IF EXISTS memmit_db;
--- CREATE DATABASE memmit_db;
+DROP DATABASE IF EXISTS memmit_db;
+CREATE DATABASE memmit_db;
 
--- \c memmit_db;
+\c memmit_db;
 
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS submemmits;
@@ -23,7 +23,7 @@ CREATE TABLE submemmits
     id SERIAL PRIMARY KEY,
     name VARCHAR,
     owner_id VARCHAR REFERENCES users(id) ON DELETE CASCADE,
-    cover_pic_url VARCHAR,
+    banner_pic_url VARCHAR,
     about_community VARCHAR,
     CONSTRAINT UC_name UNIQUE (name)
 );
@@ -72,14 +72,15 @@ VALUES
 
 
 INSERT INTO submemmits
-    (name, owner_id)
+    (name, owner_id, banner_pic_url, about_community)
 VAlUES
-    ('memes', 'E9zSOjRa2IVCrEAWfdxWaJXtwJ83'),
-    ('shibas', 'E9zSOjRa2IVCrEAWfdxWaJXtwJ83'),
-    ('nature_is_lit', 'E9zSOjRa2IVCrEAWfdxWaJXtwJ83'),
-    ('music', 'FyN8cjUNofPTd6WwXTGV0R7Czjg2'),
-    ('coding', 'FyN8cjUNofPTd6WwXTGV0R7Czjg2'),
-    ('cats', 'FyN8cjUNofPTd6WwXTGV0R7Czjg2');
+    ('memes', 'E9zSOjRa2IVCrEAWfdxWaJXtwJ83', 'https://ww2.kqed.org/app/uploads/sites/38/2019/03/tomemeornot3.jpg', 'Memes! A way of describing cultural information being shared. An element of a culture or system of behavior that may be considered to be passed from one individual to another by nongenetic means, especially imitation.'),
+    ('shibas', 'E9zSOjRa2IVCrEAWfdxWaJXtwJ83', 'https://www.solidbackgrounds.com/images/2560x1440/2560x1440-orange-web-solid-color-background.jpg', 'Submemmit for anything related to Shiba Inus. Post your pictures, videos, questions, etc.'),
+    ('nature_is_lit', 'E9zSOjRa2IVCrEAWfdxWaJXtwJ83', 'https://pbs.twimg.com/media/Ec3kq4iUcAAhdBt.jpg', 'We are here to appreciate the awesome majesty and incredibly cool aspects of nature. 🔥'),
+    ('music', 'FyN8cjUNofPTd6WwXTGV0R7Czjg2', 'https://www.nme.com/wp-content/uploads/2016/09/2016_RecordStoreDay_GettyImages-98448842_040416-696x462.jpg', 'The musical community of memmit'),
+    ('coding', 'FyN8cjUNofPTd6WwXTGV0R7Czjg2', 'https://s30776.pcdn.co/wp-content/uploads/2020/04/AdobeStock_305233591.jpeg', 'Welcome to the coding community of submemmit'),
+    ('cats', 'FyN8cjUNofPTd6WwXTGV0R7Czjg2', 'https://bestcoverpix.com/wp-content/uploads/2013/09/Cute-Cat-Facebook-Timeline-Covers.jpg', 'Pictures, videos, articles and questions featuring and about cats.');
+
 
 INSERT INTO subscriptions
     (submemmitID, userID)
@@ -104,7 +105,7 @@ VALUES
     ('E9zSOjRa2IVCrEAWfdxWaJXtwJ83', 2, 'So cute', 'https://static.boredpanda.com/blog/wp-content/uploads/2018/05/funny-shiba-inu-8-5ae806af8fa83__700.gif', 'Look at this shiba-ssant!'),
     ('FyN8cjUNofPTd6WwXTGV0R7Czjg2', 2, 'About 8 years ago...', 'https://scontent-lga3-1.xx.fbcdn.net/v/t31.0-8/459095_10151201570066088_880374472_o.jpg?_nc_cat=108&_nc_sid=cdbe9c&_nc_ohc=y20HTwjmVAUAX9_cxP9&_nc_ht=scontent-lga3-1.xx&oh=f5d9a5a68661501581f3c9133dd31620&oe=5EEFDA3A', 'This is my shiba-inu Yuki'),
     ('E9zSOjRa2IVCrEAWfdxWaJXtwJ83', 2, 'Keep smiling!', 'https://justsomething.co/wp-content/uploads/2015/08/this-shiba-inu-stuck-in-a-bush-will-teach-you-a-funny-lesson.jpg', 'Funny shiba gets stuck in bush, keeps smiling'),
-    ('E9zSOjRa2IVCrEAWfdxWaJXtwJ83', 3, 'Tree that looks like 3d computer art', 'https://www.reddit.com/r/NatureIsFuckingLit/comments/goj1ek/a_tree_that_looks_like_3d_computer_art/', 'A tree that looks like 3d computer art'),
+    ('E9zSOjRa2IVCrEAWfdxWaJXtwJ83', 3, 'Tree that looks like 3d computer art', 'https://i.redd.it/zhf0o57gfb051.jpg', 'A tree that looks like 3d computer art'),
     ('FyN8cjUNofPTd6WwXTGV0R7Czjg2', 3, 'Having lunch... wait a minute', 'https://preview.redd.it/xf8pibmwqd051.jpg?width=640&crop=smart&auto=webp&s=b94a5ebb32a46bd091acccb3f7d82bea0d53151b', 'Squirrel approves of the bench built for it'),
     ('FyN8cjUNofPTd6WwXTGV0R7Czjg2', 3, 'Eagle-owl', 'https://preview.redd.it/lo19fj1cod051.jpg?width=640&crop=smart&auto=webp&s=e9770319c27fb2e57fdb2c449ecd9d7adc802163', '🔥 This badass-looking Eurasian eagle-owl 🔥'),
     ('E9zSOjRa2IVCrEAWfdxWaJXtwJ83', 3, 'Beautiful shot', 'https://preview.redd.it/8iyd3c6549051.jpg?width=640&crop=smart&auto=webp&s=e781a28d0a06980e04a27d9e0eb0ee8b395af3d2', '🔥 Inside the wave 🔥'),

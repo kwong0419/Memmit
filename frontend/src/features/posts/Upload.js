@@ -1,40 +1,20 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { apiURL } from "../../util/apiURL";
-const API = apiURL();
+import { storage } from "../../firebase";
 
 const Upload = ({ cb }) => {
+  // const [file, setFile] = useState("");
+  // const [errorMessage, setErrorMessage] = useState("");
+  // const [toggle, setToggle] = useState(false);
+
+  //imageUpload
   const [file, setFile] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [toggle, setToggle] = useState(false);
+  const [toggleUploadMsg, setToggleUploadMsg] = useState(false);
 
   useEffect(() => {
     switchToggle();
   });
-
-  const handleUploadSubmit = async (e, call) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("imageUpload", file);
-    const config = {
-      headers: {
-        "content-type": "multipart/form-data",
-      },
-    };
-    if (file) {
-      axios
-        .post(`${API}/uploadphoto`, formData, config)
-        .then((response) => {
-          alert("The file is successfully uploaded");
-          call(response.data);
-        })
-        .catch((error) => {
-          alert("Could not upload... please upload valid image");
-        });
-    } else {
-      alert("Could not upload... please upload valid image");
-    }
-  };
 
   const switchToggle = () => (file ? setToggle(true) : setToggle(false));
 
@@ -55,19 +35,53 @@ const Upload = ({ cb }) => {
     return true;
   };
 
-  const fileOnChange = (e) => {
+  const handleFileChange = (e) => {
+    const image = e.target.files[0];
     if (checkImageType(e)) {
-      setFile(e.target.files[0]);
+      setFile((imageFile) => image);
       setErrorMessage("");
     } else {
       setErrorMessage("File type is invalid, please upload jpeg, png, gif");
     }
   };
 
+  const handleFirebaseUpload = (e, cb) => {
+    e.preventDefault();
+    if (file === "") {
+      alert(`Please choose a valid file before uploading`);
+    } else if (file !== null) {
+      const uploadTask = storage.ref(`/images/${file.name}`).put(file);
+      uploadTask.on(
+        "state_changed",
+        (snapShot) => {
+          var progress =
+            (snapShot.bytesTransferred / snapShot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
+          console.log(snapShot);
+        },
+        (err) => {
+          console.log(err);
+        },
+        () => {
+          storage
+            .ref("images")
+            .child(file.name)
+            .getDownloadURL()
+            .then((fireBaseUrl) => {
+              cb(fireBaseUrl);
+            });
+        }
+      );
+      setToggleUploadMsg(true);
+    } else {
+      setToggleUploadMsg(false);
+    }
+  };
+
   return (
     <form
       onSubmit={(e) => {
-        handleUploadSubmit(e, cb);
+        handleFirebaseUpload(e, cb);
       }}
     >
       <label for="imageInput">
@@ -82,7 +96,7 @@ const Upload = ({ cb }) => {
         type="file"
         id="imageInput"
         name="imageUpload"
-        onChange={fileOnChange}
+        onChange={handleFileChange}
         style={{ visibility: "hidden" }}
       />
       {toggle ? (
@@ -91,6 +105,7 @@ const Upload = ({ cb }) => {
         </button>
       ) : null}
       {errorMessage ? <h4>{errorMessage}</h4> : null}
+      {toggleUploadMsg ? <h5 id="uploadSuccess">Upload successful!</h5> : null}
     </form>
   );
 };

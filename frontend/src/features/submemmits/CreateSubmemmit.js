@@ -8,6 +8,7 @@ const API = apiURL();
 export default function CreateSubmemmit() {
   const { currentUser } = useContext(AuthContext);
   const [name, setName] = useState("");
+  const [about, setAbout] = useState("");
   const [alert, setAlert] = useState("");
 
   const addSubmemmit = async (e) => {
@@ -16,6 +17,7 @@ export default function CreateSubmemmit() {
       const res = await axios.post(`${API}/submemmits`, {
         name: name,
         owner_id: currentUser.id,
+        about: about,
       });
       if (res.data.error) {
         if (res.data.error["detail"].includes("exists.")) {
@@ -27,6 +29,7 @@ export default function CreateSubmemmit() {
         setAlert("Submemmit has successfully been created.");
       }
       setName("");
+      setAbout("");
     } catch (error) {
       console.log(error);
     }
@@ -42,12 +45,23 @@ export default function CreateSubmemmit() {
       <form className="formDiv" onSubmit={addSubmemmit}>
         <h1>Create a Submemmit Community</h1>
         <input
-          id="submemmitNameInput"
+          className="submemmitInput"
           type="text"
           placeholder="Submemmit Name"
           required
+          value={name}
           onChange={(e) => {
             setName(e.target.value);
+          }}
+        />
+        <input
+          className="submemmitInput"
+          type="text"
+          placeholder="What's your community about?"
+          required
+          value={about}
+          onChange={(e) => {
+            setAbout(e.target.value);
           }}
         />
         <br />

@@ -5,17 +5,22 @@
   grid-template-columns: 156px auto;
 }
 
-#communityBanner {
-  height: 100vh;
+.formDiv {
+  display: flex;
+  flex-direction: column;
 }
 
-#submemmitNameInput {
+#communityBanner {
+  height: 100%;
+}
+
+.submemmitInput {
   font-size: 24px;
   width: 20%;
   height: 50px;
 }
 
-#submemmitNameInput:focus {
+.submemmitInput:focus {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   outline: 0;
@@ -30,7 +35,7 @@
   background-color: #fcfcfb;
 }
 
-#submemmitNameInput::placeholder {
+.submemmitInput::placeholder {
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.5px;

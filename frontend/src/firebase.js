@@ -1,4 +1,4 @@
-import app from "firebase/app";
+import app from "firebase";
 import "firebase/auth";
 
 const {
@@ -24,4 +24,7 @@ const config = {
 };
 
 app.initializeApp(config);
-export default app;
+
+const storage = app.storage();
+
+export { storage, app as default };

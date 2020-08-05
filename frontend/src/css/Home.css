@@ -3,6 +3,7 @@
   padding-top: 8px;
   display: grid;
   grid-template-columns: 65vw 35vw;
+  min-height: 100vh;
 }
 
 .post {
@@ -142,6 +143,7 @@
   margin-bottom: 8px;
   margin-left: 5%;
   margin-right: 5%;
+  border-radius: 5px;
 }
 
 #searchErrorMsg {
