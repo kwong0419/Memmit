@@ -35,14 +35,14 @@ const getSingleSubmemmitById = async (req, res, next) => {
 
 const insertSingleSubmemmit = async (req, res, next) => {
   try {
-    const { name, owner_id } = req.body;
+    const { name, owner_id, banner_pic_url, about_community } = req.body;
     res.status(200).json({
       status: "Success",
       message: "get ALL submemmits",
       body: {
         submemmits: await db.any(
-          "INSERT INTO submemmits (name, owner_id) VALUES ($1, $2) RETURNING *",
-          [name, owner_id]
+          "INSERT INTO submemmits (name, owner_id, banner_pic_url, about_community) VALUES ($1, $2, $3, $4) RETURNING *",
+          [name, owner_id, banner_pic_url, about_community]
         ),
       },
     });
