@@ -59,6 +59,26 @@ const getAllPostsBySingleUser = async (req, res, next) => {
   }
 };
 
+const getAllPostsBySingleSubmemmit = async (req, res, next) => {
+  try {
+    const { submemmit_id } = req.params;
+    res.status(200).json({
+      status: "Success",
+      message: "Got all posts by submemmit id: " + submemmit_id,
+      body: {
+        posts: await db.any(
+          "SELECT * FROM posts INNER JOIN submemmits ON posts.submemmit_id = submemmits.id WHERE submemmit_id = $1",
+          [submemmit_id]
+        ),
+      },
+    });
+  } catch (error) {
+    res.json({
+      error: error,
+    });
+  }
+};
+
 const insertSinglePost = async (req, res, next) => {
   try {
     let { owner_id, submemmit_id, title, image_url, body } = req.body;
@@ -126,4 +146,5 @@ module.exports = {
   insertSinglePost,
   deleteSinglePost,
   getAllSearchedPosts,
+  getAllPostsBySingleSubmemmit,
 };

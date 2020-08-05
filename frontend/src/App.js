@@ -23,7 +23,7 @@ function App() {
         <Route exact path="/search">
           <SearchedPosts />
         </Route>
-        <Route exact path="/submemmit">
+        <Route exact path="/submemmit/:id">
           <Submemmit />
         </Route>
         <ProtectedRoute exact path="/createSubmemmit">

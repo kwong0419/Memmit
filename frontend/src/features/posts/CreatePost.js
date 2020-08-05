@@ -11,9 +11,9 @@ import { NavLink } from "react-router-dom";
 import Upload from "./Upload";
 import axios from "axios";
 import "../../css/CreatePost.css";
-const API = apiURL();
 
 export default function CreatePost() {
+  const API = apiURL();
   const dispatch = useDispatch();
   const submemmits = useSelector(selectSubmemmits);
   const history = useHistory();

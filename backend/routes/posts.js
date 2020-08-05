@@ -7,6 +7,7 @@ const {
   insertSinglePost,
   deleteSinglePost,
   getAllSearchedPosts,
+  getAllPostsBySingleSubmemmit,
 } = require("../queries/postQueries");
 
 const { checkFirebaseToken } = require("../middleware/auth");
@@ -17,5 +18,6 @@ posts.get("/user/:owner_id", getAllPostsBySingleUser);
 posts.post("/", insertSinglePost);
 posts.delete("/:id", deleteSinglePost);
 posts.get("/search/:input", getAllSearchedPosts);
+posts.get("/:submemmit_id", getAllPostsBySingleSubmemmit);
 
 module.exports = posts;

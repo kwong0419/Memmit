@@ -30,7 +30,7 @@ export default function CreateSubmemmit() {
         if (res.data.error) {
           if (res.data.error["detail"].includes("exists.")) {
             setAlert(
-              "Submemmit name already exists. Please chooser another name"
+              "Submemmit name already exists. Please choose another name"
             );
           }
         } else {
@@ -38,7 +38,7 @@ export default function CreateSubmemmit() {
           const { id } = res.data.body.submemmits[0];
           setTimeout(() => {
             history.push(`/submemmit/${id}`);
-          }, 1250);
+          }, 1000);
         }
         setName("");
         setAbout("");
