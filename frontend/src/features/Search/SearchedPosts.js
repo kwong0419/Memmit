@@ -1,8 +1,7 @@
-import React, { useEffect, useContext } from "react";
+import React from "react";
 import Linkify from "linkifyjs/react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectSearchedPosts } from "./searchSlice";
-import { AuthContext } from "../../providers/AuthContext";
 import { apiURL } from "../../util/apiURL";
 import { NavLink } from "react-router-dom";
 import Votes from "../votes/Votes";
@@ -40,12 +39,12 @@ export default function SearchedPosts() {
                   </p>
                   <h3>{post.title}</h3>
                   {post.image_url.includes("https") ? (
-                    <img src={post.image_url} alt="" id="postImage" />
+                    <img src={post.image_url} alt="postImage" id="postImage" />
                   ) : null}
                   {post.image_url.includes("/uploads/") ? (
                     <img
                       src={`${API}/${post.image_url}`}
-                      alt=""
+                      alt="postImage"
                       id="postImage"
                     />
                   ) : null}
@@ -56,7 +55,10 @@ export default function SearchedPosts() {
           })
         ) : (
           <div className="searchErrorContainer">
-            <img src="https://preview.redd.it/hhwmkzqpqzpz.jpg?auto=webp&s=e0483f15583ed40c8f81a6e9d9c89bda11446dd4" />
+            <img
+              src="https://preview.redd.it/hhwmkzqpqzpz.jpg?auto=webp&s=e0483f15583ed40c8f81a6e9d9c89bda11446dd4"
+              alt="error"
+            />
             <p id="searchErrorMsg">Sorry, there were no results found!</p>
           </div>
         )}

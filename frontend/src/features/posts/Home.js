@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect } from "react";
 import Linkify from "linkifyjs/react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectPosts, fetchAllPosts } from "./postsSlice";
@@ -11,9 +11,10 @@ import "../../css/Home.css";
 export default function Home() {
   const API = apiURL();
   const dispatch = useDispatch();
-  const { currentUser } = useContext(AuthContext);
+  // const { currentUser } = useContext(AuthContext);
 
   const posts = useSelector(selectPosts);
+
   useEffect(() => {
     // if (currentUser) {
     // dispatch(fetchAllPostsAuth);

@@ -18,6 +18,6 @@ posts.get("/user/:owner_id", getAllPostsBySingleUser);
 posts.post("/", insertSinglePost);
 posts.delete("/:id", deleteSinglePost);
 posts.get("/search/:input", getAllSearchedPosts);
-posts.get("/:submemmit_id", getAllPostsBySingleSubmemmit);
+posts.get("/submemmit/:submemmit_id", getAllPostsBySingleSubmemmit);
 
 module.exports = posts;

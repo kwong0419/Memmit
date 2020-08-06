@@ -1,7 +1,22 @@
+.submemmit {
+}
+
+.topContainer {
+  margin-left: 17%;
+}
+
 #bannerPic {
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0 auto;
   max-height: 300px;
   min-width: 100%;
+}
+
+.submemmitName {
+  font-family: inherit;
+}
+
+.submemmitAbout {
+  font-family: inherit;
 }

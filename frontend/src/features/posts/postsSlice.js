@@ -12,6 +12,15 @@ export const fetchAllPosts = () => async (dispatch) => {
   }
 };
 
+export const fetchAllPostsBySingleSubmemmit = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`${API}/posts/submemmit/${id}`);
+    dispatch(receiveAllPostsBySingleSubmemmit(res.data.body.posts));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export const fetchAllPostsAuth = () => async (dispatch) => {
   try {
     const res = await axios.get(`${API}/posts/`);
@@ -29,10 +38,15 @@ export const postsSlice = createSlice({
       state.push(action.payload);
     },
     receiveAllPosts: (state, action) => action.payload,
+    receiveAllPostsBySingleSubmemmit: (state, action) => action.payload,
   },
 });
 
 export const selectPosts = (state) => state.posts;
 
-export const { addPost, receiveAllPosts } = postsSlice.actions;
+export const {
+  addPost,
+  receiveAllPosts,
+  receiveAllPostsBySingleSubmemmit,
+} = postsSlice.actions;
 export default postsSlice.reducer;

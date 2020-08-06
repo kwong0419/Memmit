@@ -1,7 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { apiURL } from "../../util/apiURL";
-import axios from "axios";
-const API = apiURL();
 
 export const searchSlice = createSlice({
   name: "search",
