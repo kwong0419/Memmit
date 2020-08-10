@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import Linkify from "linkifyjs/react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectPosts, fetchAllPosts } from "./postsSlice";
-import { AuthContext } from "../../providers/AuthContext";
 import { NavLink } from "react-router-dom";
 import Votes from "../votes/Votes";
 import "../../css/Home.css";

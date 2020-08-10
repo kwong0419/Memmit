@@ -7,6 +7,7 @@ import "../../css/Submemmit.css";
 import "../../css/Home.css";
 import { NavLink } from "react-router-dom";
 import Votes from "../votes/Votes";
+import Comments from "../comments/Comments";
 import Linkify from "linkifyjs/react";
 import {
   selectPosts,
@@ -55,8 +56,8 @@ export default function Submemmit() {
               let dateTime = post.timestamp;
               dateTime = new Date();
               return (
-                <div className="post" key={post.id}>
-                  <Votes post_id={post.id} fetchAllPosts={posts} />
+                <div className="post" key={post.post_id}>
+                  <Votes post_id={post.post_id} fetchAllPosts={posts} />
                   <div className="postComponent">
                     <p>
                       <strong>m/{post.name} •</strong> Posted by /u/
@@ -71,6 +72,7 @@ export default function Submemmit() {
                       />
                     ) : null}
                     <Linkify tagName="p">{post.body}</Linkify>
+                    <Comments post_id={post.post_id} />
                   </div>
                 </div>
               );

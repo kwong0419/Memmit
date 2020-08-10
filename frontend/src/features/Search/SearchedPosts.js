@@ -5,22 +5,13 @@ import { selectSearchedPosts } from "./searchSlice";
 import { apiURL } from "../../util/apiURL";
 import { NavLink } from "react-router-dom";
 import Votes from "../votes/Votes";
+import Comments from "../comments/Comments";
 import "../../css/Home.css";
 
 export default function SearchedPosts() {
   const API = apiURL();
-  //   const dispatch = useDispatch();
-  //   const { currentUser } = useContext(AuthContext);
 
   const searchedPosts = useSelector(selectSearchedPosts);
-
-  //   useEffect(() => {
-  // if (currentUser) {
-  // dispatch(fetchAllPostsAuth);
-  // } else {
-  // dispatch();
-  // }
-  //   }, []);
 
   return (
     <div className="home">
@@ -60,6 +51,7 @@ export default function SearchedPosts() {
                     />
                   ) : null}
                   <Linkify tagName="p">{post.body}</Linkify>
+                  <Comments post_id={post.post_id} />
                 </div>
               </div>
             );

@@ -67,7 +67,7 @@ const getAllPostsBySingleSubmemmit = async (req, res, next) => {
       message: "Got all posts by submemmit id: " + submemmit_id,
       body: {
         posts: await db.any(
-          "SELECT * FROM posts INNER JOIN submemmits ON posts.submemmit_id = submemmits.id WHERE submemmit_id = $1",
+          "SELECT posts.id AS post_id, posts.owner_id AS post_owner_id, submemmit_id, title, image_url, body, timestamp, submemmits.id AS submemmit_id, name, submemmits.owner_id AS submemmit_owner_id, banner_pic_url, about_community FROM posts INNER JOIN submemmits ON posts.submemmit_id = submemmits.id WHERE submemmit_id = $1",
           [submemmit_id]
         ),
       },
