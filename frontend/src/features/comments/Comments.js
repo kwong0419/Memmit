@@ -157,7 +157,11 @@ export default function Comments({ post_id }) {
               src="https://img.icons8.com/ios/50/000000/send-comment.png"
               alt="add"
               onClick={() => {
-                toggle(toggleAddComment, setToggleAddComment);
+                if (currentUser && token) {
+                  toggle(toggleAddComment, setToggleAddComment);
+                } else {
+                  history.push("/login");
+                }
               }}
             />
             {toggleAddComment ? (
