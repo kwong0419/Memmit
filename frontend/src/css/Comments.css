@@ -1,0 +1,71 @@
+.commentsDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.toggleCommentsBtn {
+  font-family: inherit;
+  font-weight: 800;
+  align-self: flex-end;
+  color: slategray;
+  margin-right: 25px;
+}
+
+.toggleCommentsBtn:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.noComments {
+  width: 80%;
+}
+
+.comment {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: auto;
+}
+
+.commentItem {
+  width: auto;
+}
+
+.addCommentBtn:hover {
+  opacity: 70%;
+}
+
+.deleteCommentsBtn:hover {
+  opacity: 30%;
+}
+
+.addCommentForm {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+}
+
+.enterBtn {
+  padding: 0;
+  border: none;
+  background: none;
+  align-self: center;
+}
+
+.enterBtn:hover {
+  height: 30px;
+  width: 30px;
+}
+
+.deleteBtn {
+  align-self: center;
+  height: 25px;
+  width: 25px;
+}
+
+.deleteBtn:hover {
+  align-self: center;
+  height: 35px;
+  width: 35px;
+}

@@ -3,13 +3,12 @@ import Linkify from "linkifyjs/react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectPosts, fetchAllPosts } from "./postsSlice";
 import { AuthContext } from "../../providers/AuthContext";
-import { apiURL } from "../../util/apiURL";
 import { NavLink } from "react-router-dom";
 import Votes from "../votes/Votes";
 import "../../css/Home.css";
+import Comments from "../comments/Comments";
 
 export default function Home() {
-  const API = apiURL();
   const dispatch = useDispatch();
   // const { currentUser } = useContext(AuthContext);
 
@@ -34,17 +33,26 @@ export default function Home() {
               <Votes post_id={post.post_id} fetchAllPosts={fetchAllPosts} />
               <div className="postComponent">
                 <p>
-                  <strong>m/{post.submemmit_name} •</strong> Posted by /u/
+                  <NavLink
+                    exact
+                    path
+                    to={`/submemmit/${post.submemmit_id}`}
+                    className="submemmitLink"
+                    onClick={() => {
+                      window.scrollTo(0, 0);
+                    }}
+                  >
+                    <strong>m/{post.submemmit_name} </strong>
+                  </NavLink>
+                  • Posted by /u/
                   {post.username} on {dateTime.toDateString()}
                 </p>
                 <h3>{post.title}</h3>
                 {post.image_url.includes("https") ? (
                   <img src={post.image_url} alt="" id="postImage" />
                 ) : null}
-                {post.image_url.includes("/uploads/") ? (
-                  <img src={`${API}/${post.image_url}`} alt="" id="postImage" />
-                ) : null}
                 <Linkify tagName="p">{post.body}</Linkify>
+                <Comments post_id={post.post_id} />
               </div>
             </div>
           );

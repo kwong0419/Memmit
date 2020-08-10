@@ -59,7 +59,7 @@ export default function Submemmit() {
                   <Votes post_id={post.id} fetchAllPosts={posts} />
                   <div className="postComponent">
                     <p>
-                      <strong>m/{post.submemmit_name} •</strong> Posted by /u/
+                      <strong>m/{post.name} •</strong> Posted by /u/
                       {post.username} on {dateTime.toDateString()}
                     </p>
                     <h3>{post.title}</h3>

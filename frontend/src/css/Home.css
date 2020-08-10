@@ -152,3 +152,25 @@
   font: inherit;
   font-weight: 800;
 }
+
+.toggleCommentsBtn {
+  font-family: inherit;
+  font-weight: 800;
+  justify-self: right;
+  color: slategray;
+  margin-right: 25px;
+}
+
+.toggleCommentsBtn:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.submemmitLink {
+  text-decoration: none;
+  color: black;
+}
+
+.submemmitLink:hover {
+  color: lightgrey;
+}

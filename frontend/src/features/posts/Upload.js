@@ -18,7 +18,7 @@ const Upload = ({ cb }) => {
     let files = e.target.files;
     let err = "";
     const types = ["image/png", "image/jpeg", "image/gif", "image/jpg"];
-    for (var x = 0; x < files.length; x++) {
+    for (let x = 0; x < files.length; x++) {
       if (types.every((type) => files[x].type !== type)) {
         err += files[x].type + " is not a supported format\n";
       }

@@ -21,7 +21,7 @@ export default function CreatePost() {
 
   useEffect(() => {
     dispatch(fetchAllSubmemmits());
-  }, []);
+  }, [dispatch]);
 
   const [titleInput, setTitleInput] = useState("");
   const [submemmitID, setSubmemmitID] = useState("");

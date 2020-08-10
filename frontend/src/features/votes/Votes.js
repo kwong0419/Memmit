@@ -60,17 +60,19 @@ export default function Votes({ post_id }) {
   return (
     <div className="votesComponent">
       <button className="voteBtn" id="upvoteBtn" onClick={upVotePost}>
-        <img
+        ↑
+        {/* <img
           alt="upvote"
           src="https://img.icons8.com/material/24/000000/up--v2.png"
-        />
+        /> */}
       </button>
       {votes ? <h4>{votes.length}</h4> : null}
       <button className="voteBtn" id="downvoteBtn" onClick={downVotePost}>
-        <img
+        {/* <img
           alt="downvote"
           src="https://img.icons8.com/material/24/000000/down--v2.png"
-        />
+        /> */}
+        ↓
       </button>
     </div>
   );

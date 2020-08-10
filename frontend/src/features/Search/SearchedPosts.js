@@ -34,7 +34,18 @@ export default function SearchedPosts() {
                 <Votes post_id={post.post_id} fetchAllPosts={searchedPosts} />
                 <div className="postComponent">
                   <p>
-                    <strong>m/{post.submemmit_name} •</strong> Posted by /u/
+                    <NavLink
+                      exact
+                      path
+                      to={`/submemmit/${post.submemmit_id}`}
+                      className="submemmitLink"
+                      onClick={() => {
+                        window.scrollTo(0, 0);
+                      }}
+                    >
+                      <strong>m/{post.submemmit_name} </strong>
+                    </NavLink>
+                    • Posted by /u/
                     {post.username} on {dateTime.toDateString()}
                   </p>
                   <h3>{post.title}</h3>
