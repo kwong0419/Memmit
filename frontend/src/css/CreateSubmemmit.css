@@ -79,7 +79,7 @@
 }
 
 .submitBtn:hover {
-  opacity: 75%;
+  opacity: 0.75;
 }
 
 .uploadContainer .uploadText {

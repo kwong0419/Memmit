@@ -76,7 +76,7 @@ button {
 }
 
 .signupBtn:hover {
-  opacity: 75%;
+  opacity: 0.75;
 }
 
 .logoutBtn {
@@ -98,7 +98,7 @@ button {
 }
 
 .logoutBtn:hover {
-  opacity: 75%;
+  opacity: 0.75;
 }
 
 #navLogo {
