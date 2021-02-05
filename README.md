@@ -9,8 +9,9 @@ https://memmit.netlify.app/
 Things that you can do with this app:
 
 - Create user account
-- Post a photo, text, or links on a live feedpage under a certain subreddit
-- Create a subreddit community
-- Search for different kinds of posts based on which subreddit they are listed under
+- Post a photo, text, or links on a live feedpage under a certain submemmit
+- Create a submemmit community
+- Search for filtered posts based on which submemmit they are listed under
+- View a submemmit and its posts
 
 
