@@ -1,7 +1,9 @@
 # Memmit
 
 *** BEFORE YOU RUN APP ***
-*** Due to the limited hosting service of Heroku, website will need ~7 seconds to wake up in order for backend to operate functionally ***
+*** Due to the limited hosting service of Heroku
+*** website will need ~7 seconds to wake up 
+*** in order for backend to operate functionally
 
 This web-application is a clone website based off the popular forum/website Reddit.
 
