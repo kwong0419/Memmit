@@ -13,5 +13,7 @@ Things that you can do with this app:
 - Create a submemmit community
 - Search for filtered posts based on which submemmit they are listed under
 - View a submemmit and its posts
+- Add or delete comment on a memmit post
+- Upvote or downvote a memmit post
 
 
